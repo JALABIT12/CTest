@@ -3,6 +3,7 @@
 #include<conio.h> //conio.h
 #include<math.h>//math.h
 #include<time.h> //time.h
+#include<string.h>//string.h 문자열 관련
 const int students = 20; //배열 안에 상수가 필요한데 앞에 const를 붙이면 해결 된다.
 // const로 선언한 것은 상수로 표현했지 실질적으로 students는 변수이다.
 int score()
@@ -117,6 +118,20 @@ void sort(int *a, int n) // 다른 이름으로 받아도 된다. 단, data 타�
 		}
 	}
 }
+//struct student {
+	//int kor;
+	//int eng;
+	//char name[7];
+//};
+//typedef struct student STU;
+// 위의 구조체를 이용하여 사용자 정의 자료형을 선언하고, 10명의 학생에 대한 데이터를 입력한 후
+//정렬하여 출력하시오.
+typedef struct {
+	int kor;
+	int eng;
+	char name[7];
+} STU; 
+
 //전역변수 : 이하의 함수에서 사용 가능
 const int nArr = 7; //배열의 개수도 상수화
 int kor[] = { 82 , 93  ,71 , 69,  78,  84  ,75 }; //초기화 과정
@@ -125,7 +140,7 @@ char nam[] = "ABCDEFGH";
 const char* name[] = { "홍길동" ,"홍길이" ,"홍길삼", "홍길사", "홍길오" ,"길육" ,"길칠" }; //String Array
 //문자열 포인터로 변경: "홍길동" "홍길이" "홍길삼" "홍길사" "홍길오" "길육" "길칠"
 // char*nam[] 포인터 배열 변경->배열이니까 const 붙이고 아래 함수들도 변경
-
+STU student[nArr]; //10명의 학생을 선언, 전역 변수로 만들었다. 
 void swapEx(double* a, double* b) //int 대신 double->tot //double->float으로 변경
 {
 	double c = *a;
@@ -165,6 +180,12 @@ void SWAP(void* a, void* b, int op) //void pointer와 option
 		*(double*)b = c;
 	}
 	//float, string(char*) 4byte
+	if (op == 18) // struct student   //STU
+	{
+		STU c = *(STU*)a; //casting 변환을 통해, 입력 값에 맞게 적용
+		*(STU*)a = *(STU*)b;
+		*(STU*)b = c;
+	}
 }
 void sortEx(double* a, int n) // int 대신 float->변수 타입이 달라졌다.
 {
@@ -181,9 +202,12 @@ void sortEx(double* a, int n) // int 대신 float->변수 타입이 달라졌다
 				//swap(eng + i, eng + j); //int
 				//swapEx2(name+i , name+j); //안정적이지 않지만, 컴파일러를 속인다.   char*=string //string
 				SWAP(a + i, a + j, 8); //8byte
-				SWAP(kor + i, kor + j, 4); //4byte
-				SWAP(eng + i, eng + j, 4); //4byte
-				SWAP(name + i, name + j, 4); //4byte
+				SWAP(student + i, student + j, 18); //4=op, SWAP(name + i, name + j, 4)과 의미가 같다.
+				//구조체는 한 번만 sorting을 해도 된다.->데이터를 어떻게 구조화 하느냐에 따라 프로그램 관리가 쉽다.
+				// name은 문자열의 배열==*
+				//SWAP(kor + i, kor + j, 4); //4byte
+				//SWAP(eng + i, eng + j, 4); //4byte
+				//SWAP(name + i, name + j, 4); //4byte
 			}
 			
 		}
@@ -231,6 +255,41 @@ void sortTest()
 	 국어  82  93  71  69  78  84  75    --- 가중치 0.3
      영어  76  91  67  73  86  63  83    --- 가중치 0.7
 	 */
+void sortTestNew() 
+{
+	
+	double f_kor = 0.3, f_eng = 0.7; //가중치
+	//int kor[] = { 82 , 93  ,71 , 69,  78,  84  ,75 };
+	//int eng[] = { 76,  91,  67,  73,  86,  63,  83 };
+	double tot[nArr]; //const를 이용하여 배열 상수를 만든다.
+	//char nam[] = "ABCDEFG"; //name
+	//기본 선언이 끝났고 다음 과정은 초기화할 차례, total에 대한 계산 과정 필요.
+	int i, j, k;
+	for (i = 0; i < nArr; i++)
+	{
+		//student[i].kor = kor[i]; //10 번째 학생의 국어 점수
+		//student[i].eng = eng[i];
+		strcpy(student[i].name, name[i]); //문자열을 =대입문으로 사용x  strcpy(destination, ) string.h가 필요
+
+		tot[i] = (student[i].kor = kor[i]) * f_kor + (student[i].eng = eng[i]) * f_eng; // 262,263 생략, 원래 있던 것과 비교
+	}
+	printf("Original :\n ");
+	printf("이름 : "); for (int i = 0; i < nArr; i++) printf("%7s	", student[i].name); printf("\n\n");
+	printf("국어 : "); for (int i = 0; i < nArr; i++) printf("%7d	", student[i].kor); printf("\n\n");
+	printf("영어 : "); for (int i = 0; i < nArr; i++) printf("%7d	", student[i].eng); printf("\n\n");
+	printf("합계 : "); for (int i = 0; i < nArr; i++) printf("%7.2f	", tot[i]); printf("\n\n");  //tot는 double
+
+	sortEx(tot, nArr);
+
+	printf("Sorted :\n ");
+	printf("이름 : "); for (int i = 0; i < nArr; i++) printf("%7s	", student[i].name); printf("\n\n");
+	printf("국어 : "); for (int i = 0; i < nArr; i++) printf("%7d	", student[i].kor); printf("\n\n");
+	printf("영어 : "); for (int i = 0; i < nArr; i++) printf("%7d	", student[i].eng); printf("\n\n");
+	printf("합계 : "); for (int i = 0; i < nArr; i++) printf("%7.2f	", tot[i]); printf("\n\n");  //tot는 double
+	//sort(arr, nArr); //nArr은 배열의 개수
+
+	//printf("Sorted : "); for (int i = 0; i < nArr; i++) printf("%d	", arr[i]); printf("\n\n");
+}
 void VoidPrint(void* p, int i)
 {
 	if (i == 1)
@@ -258,13 +317,14 @@ void VoidTest()
 	VoidPrint( &a, 3);
 
 }
+
 int main()
 {
 	//score();  score 수행하지 않도록 처리-> 프로젝트 여러개 구성할 필요 없이.
 	//Good();
 	//PointerTest();
 	//SwapTest();
-
-	sortTest();
+	//sortTest();
 	//VoidTest();
+	sortTestNew();
 }
