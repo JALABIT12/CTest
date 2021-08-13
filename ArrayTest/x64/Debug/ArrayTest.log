@@ -21,10 +21,11 @@ C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(79,9): warning C4477:
 C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(79,9): warning C4313: 'printf': 서식 문자열의 '%x'이(가) 인수 1('int (*)[2]' 형식)과(와) 충돌합니다.
 C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(110,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
 C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(192,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(225,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(225,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(271,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(266,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(266,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(313,8): warning C4101: 'vp' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(226,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(226,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(272,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(267,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(267,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(314,8): warning C4101: 'vp' :참조되지 않은 지역 변수입니다.
+C:\Users\JALAB\source\repos\CTest1\ArrayTest\ArrayTest.cpp(324,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   ArrayTest.vcxproj -> C:\Users\JALAB\source\repos\CTest1\x64\Debug\ArrayTest.exe

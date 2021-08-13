@@ -318,6 +318,22 @@ void VoidTest()
 
 }
 
+void StreamTest()
+{
+	char buf[1024];
+	FILE* f = fopen("C:\\Users\\JALAB\\aa","r"); //fopen 함수를 써서 초기화, \\를 두 번써야된다. 주소는 폴더에서 복사함
+	//입력"r"(read) or 출력"w"(write)(overwrite) 기존에 다 지우고 완전히 새롭게 생성 a(append) 추가
+	//존재하지 않는 파일 지정하면 오류 발생-> 만약 파일이 존재하지 않으면 NULL반환
+	if (f  !=NULL)
+	{
+		while (1)
+		{
+			if (fgets(buf, 1024, f)==NULL) break; //console file
+			fputs(buf, stdout);
+		}
+	}
+	else printf("입력 파일이 존재하지 않습니다.\n");
+}
 int main()
 {
 	//score();  score 수행하지 않도록 처리-> 프로젝트 여러개 구성할 필요 없이.
@@ -326,5 +342,6 @@ int main()
 	//SwapTest();
 	//sortTest();
 	//VoidTest();
-	sortTestNew();
+	//sortTestNew();
+	StreamTest();
 }
